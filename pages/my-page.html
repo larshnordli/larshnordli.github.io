@@ -8,11 +8,26 @@
     <body>
         <label>
             Enable text field:
-            <input id="enable" type="checkbox" />
+            <input id="enable" value="off" type="checkbox"/>
         </label>
         <label>Write something:
-            <input type="text" disabled />
+            <input id="textfield" type="text" disabled />
         </label>
         <a href="https://larshnordli.github.io">Go back home</a>
+
+        <script>
+            const checkbox = document.getElementById("enable");
+            
+            function toggleTextField(e) {
+                const textfield = document.getElementById("textfield");
+
+                const toggleValue = e.target.value == "off" ? false : true;
+
+                textfield.disabled = toggleValue;
+                checkbox.setAttribute("value", toggleValue ? "off" : "on");
+            }
+
+            checkbox.addEventListener('change', toggleTextField);
+        </script>
     </body>
 </html>
